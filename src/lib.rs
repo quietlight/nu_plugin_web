@@ -93,7 +93,7 @@ impl SimplePluginCommand for WebSearch {
     }
 
     fn description(&self) -> &str {
-        "Search the web: table<url, title, publish_date, excerpts>."
+        "Search the web: table<url, title, publish_date, excerpts>; pipe to `to yaml` to read the excerpts."
     }
 
     fn extra_description(&self) -> &str {
@@ -228,7 +228,7 @@ impl SimplePluginCommand for WebExtract {
     }
 
     fn description(&self) -> &str {
-        "Read web pages: table<url, title, publish_date, excerpts, full_content?, error?>."
+        "Read web pages: table<url, title, publish_date, excerpts, full_content?, error?>; pipe to `to yaml` to read them."
     }
 
     fn extra_description(&self) -> &str {
