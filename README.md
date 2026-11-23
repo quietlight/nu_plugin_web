@@ -40,18 +40,21 @@ Queries and URLs leave the machine, and Parallel then fetches the URLs it is
 given, so a URL is also a way to send data out. This narrows where data goes,
 not whether it goes: list the plugin only in profiles that need the web.
 
-## Build and register
+## Install
 
-`nu-plugin`/`nu-protocol` are path dependencies on `../nushell` (the patched
-checkout), so the plugin always matches the nu that runs it. The plugin
-protocol is locked to nu's minor version: rebuild and re-add after every
-nushell bump.
+Needs Rust and nushell 0.117.x. The plugin protocol is locked to nu's minor
+version, so the plugin's `nu-plugin`/`nu-protocol` versions must match your nu.
 
 ```nu
-cargo build --release
-plugin add target/release/nu_plugin_web
+cargo install --git https://github.com/quietlight/nu_plugin_web --locked
+plugin add ~/.cargo/bin/nu_plugin_web
 plugin use web
 ```
 
-For op, symlink the binary onto `PATH` (`~/.cargo/bin/nu_plugin_web`) and
-list `web` in a profile's `plugins`; op registers it itself.
+From a checkout, `cargo install --path . --locked` does the same. For op, list
+`web` in a profile's `plugins`: op finds `nu_plugin_web` on `PATH` and registers it
+itself.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

@@ -4,14 +4,15 @@ version = "0.1.0"
 edition = "2024"
 description = "Nushell plugin: web search and page extraction through Parallel's Search and Extract APIs"
 license = "MIT"
+repository = "https://github.com/quietlight/nu_plugin_web"
+keywords = ["nushell", "plugin"]
 publish = false
 
 [dependencies]
-# Path deps into the patched nushell checkout next door, so this plugin is
-# always built against the exact nu that runs it (the plugin protocol is
-# locked to nu's minor version). Rebuild after every nushell bump.
-nu-plugin = { path = "../nushell/crates/nu-plugin" }
-nu-protocol = { path = "../nushell/crates/nu-protocol", features = ["plugin"] }
+# The plugin protocol is locked to nu's minor version: these must match the
+# nu that loads the plugin (0.117.x here). Bump both after a nushell upgrade.
+nu-plugin = "0.117.0"
+nu-protocol = { version = "0.117.0", features = ["plugin"] }
 serde_json = "1.0"
 ureq = { version = "3.4", features = ["json"] }
 
